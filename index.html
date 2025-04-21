@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuenta regresiva al viaje</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 300px;
+      max-width: 90%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #countdown {
+      display: flex;
+      gap: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .time-box {
+      text-align: center;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      font-weight: normal;
+      color: #666;
+    }
+
+    #shareBtn {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #shareBtn:hover {
+      background-color: #1da851;
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Se viene la EspinFest! 🎉</h1>
+
+  <!-- FOTO DEL GRUPO O DESTINO -->
+  <img src="./pablo.jpg" alt="Foto del destino">
+
+  <!-- COUNTDOWN -->
+  <div id="countdown">
+    <div class="time-box">
+      <div id="days">--</div>
+      <div class="label">Días</div>
+    </div>
+    <div class="time-box">
+      <div id="hours">--</div>
+      <div class="label">Horas</div>
+    </div>
+    <div class="time-box">
+      <div id="minutes">--</div>
+      <div class="label">Minutos</div>
+    </div>
+    <div class="time-box">
+      <div id="seconds">--</div>
+      <div class="label">Segundos</div>
+    </div>
+  </div>
+
+  <!-- BOTÓN DE COMPARTIR -->
+  <button id="shareBtn">Compartir por WhatsApp</button>
+
+  <script>
+    const countdown = () => {
+      const targetDate = new Date("2025-04-25T19:00:00").getTime();
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "<p>¡Ya estamos de viaje! 🧳</p>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    };
+
+    countdown();
+    setInterval(countdown, 1000);
+
+    document.getElementById("shareBtn").addEventListener("click", () => {
+      const text = encodeURIComponent("¡Ya falta poco para nuestro viaje! 🎉 Mirá la cuenta regresiva 👉");
+      const url = encodeURIComponent(window.location.href);
+      const whatsappUrl = `https://wa.me/?text=${text} ${url}`;
+      window.open(whatsappUrl, "_blank");
+    });
+  </script>
+</body>
+</html>
