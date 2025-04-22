@@ -64,8 +64,6 @@
   </style>
 </head>
 <body>
-  <h1>¡Se viene la EspinFest! 🎉</h1>
-
   <!-- FOTO -->
   <img src="./pablo.jpg" alt="Nazario">
 
@@ -99,7 +97,7 @@
       const distance = targetDate - now;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<p>¡Ya estamos de escabiando! 🧳</p>";
+        document.getElementById("countdown").innerHTML = "<p>¡Dale papi!</p>";
         return;
       }
 
@@ -118,7 +116,7 @@
     setInterval(countdown, 1000);
 
     document.getElementById("shareBtn").addEventListener("click", () => {
-      const text = encodeURIComponent("¡Daleeeeeeeee! 🎉");
+      const text = encodeURIComponent("¡Kmpra papi! 🎉");
       const url = encodeURIComponent(window.location.href);
       const whatsappUrl = `https://wa.me/?text=${text} ${url}`;
       window.open(whatsappUrl, "_blank");
