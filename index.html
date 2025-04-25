@@ -97,7 +97,12 @@
       const distance = targetDate - now;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<p>¡Dale papi!</p>";
+        document.getElementById("countdown").innerHTML = "<p>¡Puto el que no este ebrio!</p>";
+
+        const img = document.querySelector("img");
+        img.src = "./pablitofiesta.jpg"; // nueva imagen
+        img.alt = "¡Fiesta!";
+        
         return;
       }
 
