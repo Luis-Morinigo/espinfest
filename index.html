@@ -65,7 +65,12 @@
 </head>
 <body>
   <!-- FOTO -->
-  <img src="./pablo.jpg" alt="Nazario">
+  <!-- <img src="./pablo.jpg" alt="Nazario"> -->
+
+  <video id="video" width="320" height="240" controls autoplay loop muted>
+  <source src="./Pablo.mp4" type="video/mp4">
+  Tu navegador no soporta la reproducción de video.
+</video>
 
   <!-- COUNTDOWN -->
   <div id="countdown">
@@ -99,9 +104,8 @@
       if (distance < 0) {
         document.getElementById("countdown").innerHTML = "<p>¡Puto el que no este ebrio!</p>";
 
-        const img = document.querySelector("img");
-        img.src = "./Pablo.mp4"; // nueva imagen
-        img.alt = "¡EspinFest!";
+        const source = document.querySelector("source");
+        source.src = "./Pablo.mp4"; 
         
         return;
       }
